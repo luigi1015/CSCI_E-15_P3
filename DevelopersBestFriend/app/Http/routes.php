@@ -19,8 +19,21 @@ Route::get('/', function () {
 
 Route::post('/loremipsum', function () {
     //return view('welcome');
-    return 'Hello World';
+    //return 'Hello World';
     //return view('developersbestfriend');
+	$generator = new Badcow\LoremIpsum\Generator();
+	$paragraphs = $generator->getParagraphs(5);
+	return implode('<p>', $paragraphs);
+});
+
+Route::post('/randomuser', function () {
+    //return view('welcome');
+    //return 'Hello World';
+    //return view('developersbestfriend');
+	//require_once '/home/jeff/CSCI_E-15_P3/DevelopersBestFriend/vendor/fzaninotto/faker/src/autoload.php';
+	require_once '../vendor/fzaninotto/faker/src/autoload.php';
+	$faker = Faker\Factory::create();
+	return $faker->name;
 });
 
 /*
