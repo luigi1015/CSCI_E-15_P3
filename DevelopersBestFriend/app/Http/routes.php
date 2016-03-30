@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Input;
+
 /*
 |--------------------------------------------------------------------------
 | Routes File
@@ -21,8 +23,10 @@ Route::post('/loremipsum', function () {
     //return view('welcome');
     //return 'Hello World';
     //return view('developersbestfriend');
+	$numParagraphs = Input::get('paragraphs');
 	$generator = new Badcow\LoremIpsum\Generator();
-	$paragraphs = $generator->getParagraphs(5);
+	//$paragraphs = $generator->getParagraphs(5);
+	$paragraphs = $generator->getParagraphs($numParagraphs);
 	return implode('<p>', $paragraphs);
 });
 
@@ -32,8 +36,37 @@ Route::post('/randomuser', function () {
     //return view('developersbestfriend');
 	//require_once '/home/jeff/CSCI_E-15_P3/DevelopersBestFriend/vendor/fzaninotto/faker/src/autoload.php';
 	require_once '../vendor/fzaninotto/faker/src/autoload.php';
-	$faker = Faker\Factory::create();
-	return $faker->name;
+	$numUsers = Input::get('users');
+	$output = '';
+	for( $i = 0; $i < $numUsers; $i++ )
+	{
+		$faker = Faker\Factory::create();
+		$output .= ($i + 1) . ' ' . $faker->name . ' <br>';
+
+		if( Input::has('birthdate') )
+		{
+			$output .= $faker->dateTimeThisCentury->format('Y-m-d') . ' <br>';
+		}
+
+		if( Input::has('profile') )
+		{
+			$output .= $faker->paragraph() . ' <br>';
+		}
+
+		$output .= ' <br><br> ';
+	}
+
+	if( Input::has('birthdate') )
+	{
+		$output .= ' <br> Needs Birthdates. ';
+	}
+
+	if( Input::has('profile') )
+	{
+		$output .= ' <br> Needs Profiles. ';
+	}
+
+	return $output;
 });
 
 /*
