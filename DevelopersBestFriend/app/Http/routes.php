@@ -14,61 +14,10 @@ use Illuminate\Support\Facades\Input;
 */
 
 Route::get('/', function () {
-    //return view('welcome');
-    //return 'Hello World';
     return view('developersbestfriend');
 })->middleware('web');
 Route::post('/loremipsum', 'LoremIpsumController@postLoremIpsum');
-/*
-Route::post('/loremipsum', function () {
-    //return view('welcome');
-    //return 'Hello World';
-    //return view('developersbestfriend');
-	$numParagraphs = Input::get('paragraphs');
-	$generator = new Badcow\LoremIpsum\Generator();
-	//$paragraphs = $generator->getParagraphs(5);
-	//$paragraphs = implode('/n', $generator->getParagraphs($numParagraphs) );
-	$paragraphs = $generator->getParagraphs($numParagraphs);
-	//return implode('<p>', $paragraphs);
-	return view('loremipsum')->with('loremIpsum', $paragraphs);
-});
-*/
 Route::post('/randomuser', 'RandomUserController@postRandomUser');
-/*
-Route::post('/randomuser', function () {
-    //return view('welcome');
-    //return 'Hello World';
-    //return view('developersbestfriend');
-	//require_once '/home/jeff/CSCI_E-15_P3/DevelopersBestFriend/vendor/fzaninotto/faker/src/autoload.php';
-	require_once '../vendor/fzaninotto/faker/src/autoload.php';
-	$numUsers = Input::get('users');
-	$users = [];
-	for( $i = 0; $i < $numUsers; $i++ )
-	{
-		$faker = Faker\Factory::create();
-		$user = [];
-		$user['name'] = $faker->name;
-		//$output .= ($i + 1) . ' ' . $faker->name . ' <br>';
-
-		if( Input::has('birthdate') )
-		{
-			$user['birthdate'] = $faker->dateTimeThisCentury->format('Y-m-d');
-			//$output .= $faker->dateTimeThisCentury->format('Y-m-d') . ' <br>';
-		}
-
-		if( Input::has('profile') )
-		{
-			$user['profile'] = $faker->paragraph;
-			//$output .= $faker->paragraph() . ' <br>';
-		}
-
-		//$output .= ' <br><br> ';
-		array_push($users, $user);
-	}
-	//return $output;
-	return view('users')->with('users', $users);
-});
-*/
 
 /*
 |--------------------------------------------------------------------------
