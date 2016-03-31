@@ -5,6 +5,13 @@
     </head>
     <body>
         <h1>Developer's Best Friend</h1>
+	@if(count($errors) > 0)
+		<ul>
+			@foreach ($errors->all() as $error)
+				<li>{{ $error }}</li>
+			@endforeach
+		</ul>
+	@endif
         <div>
         <h2>Lorem Ipsum Generator</h2>
         <form method='POST' action="loremipsum">

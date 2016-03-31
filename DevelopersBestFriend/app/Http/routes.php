@@ -17,8 +17,9 @@ Route::get('/', function () {
     //return view('welcome');
     //return 'Hello World';
     return view('developersbestfriend');
-});
-
+})->middleware('web');
+Route::post('/loremipsum', 'LoremIpsumController@postLoremIpsum');
+/*
 Route::post('/loremipsum', function () {
     //return view('welcome');
     //return 'Hello World';
@@ -31,7 +32,9 @@ Route::post('/loremipsum', function () {
 	//return implode('<p>', $paragraphs);
 	return view('loremipsum')->with('loremIpsum', $paragraphs);
 });
-
+*/
+Route::post('/randomuser', 'RandomUserController@postRandomUser');
+/*
 Route::post('/randomuser', function () {
     //return view('welcome');
     //return 'Hello World';
@@ -62,20 +65,10 @@ Route::post('/randomuser', function () {
 		//$output .= ' <br><br> ';
 		array_push($users, $user);
 	}
-/*
-	if( Input::has('birthdate') )
-	{
-		$output .= ' <br> Needs Birthdates. ';
-	}
-
-	if( Input::has('profile') )
-	{
-		$output .= ' <br> Needs Profiles. ';
-	}
-*/
 	//return $output;
 	return view('users')->with('users', $users);
 });
+*/
 
 /*
 |--------------------------------------------------------------------------
