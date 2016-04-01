@@ -10,6 +10,6 @@
 		{{ $paragraph }}
 	</p>
 	@endforeach
-	<a href="\">Main Page</a>
+	<a href="/">Main Page</a>
     </body>
 </html>

@@ -14,6 +14,6 @@
 		{{isset($user['profile']) ? 'Profile: ' . $user['profile'] : '' }}
 	</p>
 	@endforeach
-	<a href="\">Main Page</a>
+	<a href="/">Main Page</a>
     </body>
 </html>
